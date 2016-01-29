@@ -9,11 +9,11 @@ However, following a suggestion from [Peter Steinberger](https://twitter.com/ste
 
 My Core Image solution, even without recreating a new `CIContext` with each compare, is a whole load slower! Looking at three 640x640 images 25 times gives these total timings on my iPad Pro:
 
-* fb_compareWithImage - execution time 0.156560003757477
-* UIImageEqualToImage - execution time 3.25684899091721
-* UIImageEqualToImage (2) - execution time 1.75236403942108
+* `fb_compareWithImage` - execution time 0.156560003757477
+* `UIImageEqualToImage` - execution time 3.25684899091721
+* `UIImageEqualToImage` (2) - execution time 1.75236403942108
 
-_UIImageEqualToImage (2)_ - uses a single `CIContext`.
+_`UIImageEqualToImage` (2)_ - uses a single `CIContext`.
 
 So, if you want to compare the contents of two images, stick with `memcmp`!
 
